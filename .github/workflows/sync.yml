@@ -19,4 +19,4 @@ jobs:
       - name: Push to other remote
         env:
             GIT_PAT: ${{ secrets.TESTER2 }}
-        run: git push https://org-access-token:${GIT_PAT}@github.com/biforge/public-workflow-test.git HEAD:master -f
+        run: git push https://org-access-token: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@github.com/biforge/public-workflow-test.git HEAD:master -f
