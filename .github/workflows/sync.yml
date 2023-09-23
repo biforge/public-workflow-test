@@ -1,0 +1,22 @@
+name: Sync public branch with public repo
+
+on:
+  push:
+    branches:
+      - public
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  push-to-public-remote:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Push to other remote
+        env:
+            GIT_PAT: ${{ secrets.TESTER2 }}
+        run: git config user.name "org-access-token" && git config user.password ${GIT_PAT} && git push https://github.com/biforge/public-workflow-test.git HEAD:master -f
